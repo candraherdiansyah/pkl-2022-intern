@@ -1,0 +1,61 @@
+tambahkan field 'role' didalam table users
+langsung migrate:fresh
+buat middleware
+php artisan make:middleware Admin(sesuai kebutuhan)
+isi Admin.php
+use Auth; -> sesudah namespace
+didalam method:
+if (Auth::user()->role === "admin") {
+    return $next($request);
+}
+return redirect('errors');
+
+di dalam file kernel.php
+daftarkan middleware yang sudah dibuat dibagian array
+$routeMiddleware = [
+....
+'isAdmin' => \App\Http\Middleware\Admin::class,
+]
+
+buat sample data user ->
+php artisan make:seeder UserSeeder
+isi method run
+// sample admin
+$admin = new \App\Models\User();
+$admin->name = "Admin Project";
+$admin->email = "admin@gmail.com";
+$admin->password = bcrypt("rahasia");
+$admin->role = "admin";
+$admin->save();
+
+// sample tamu atau pendatang
+$guest = new \App\Models\User();
+$guest->name = "guest Project";
+$guest->email = "guest@gmail.com";
+$guest->password = bcrypt("rahasia");
+$guest->role = "guest";
+$guest->save();
+
+panggil class UserSeeder di dalam file DatabaseSeeder
+method run
+$this->call(UserSeeder::class)
+
+tambahkan sample data ke Database
+php artisan db:seed
+
+isi web.php
+Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'isAdmin']], function () {
+    Route::get('profile', function () {
+        return view('profile');
+    });
+});
+
+Route::get('/errors', function () {
+    return view('403');
+});
+
+buat file 403.blade.php & profile.blade.php
+
+lakukan login menggunakan akun yang berbeda dari data
+yang sudah ditambahkan ke DB
+lihat perbedaan nya
