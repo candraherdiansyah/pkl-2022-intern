@@ -1,6 +1,10 @@
 <?php
 
-use App\Http\Controllers\MyController;
+use App\Http\Controllers\DurasiFilmController;
+use App\Http\Controllers\GenreController;
+use App\Http\Controllers\MovieController;
+use App\Http\Controllers\ReviewerController;
+use App\Http\Controllers\TahunRilisController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -13,13 +17,18 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'isAdmin']], function () {
+// route admin
+Route::group(['prefix' => 'admin',
+    'middleware' => ['auth', 'isAdmin']], function () {
     Route::get('/', function () {
         return view('admin.index');
     });
-    Route::get('profile', function () {
-        return view('profile');
-    });
+
+    Route::resource('genre', GenreController::class);
+    Route::resource('durasi_film', DurasiFilmController::class);
+    Route::resource('movie', MovieController::class);
+    Route::resource('reviewer', ReviewerController::class);
+    Route::resource('tahun_rilis', TahunRilisController::class);
 
 });
 
