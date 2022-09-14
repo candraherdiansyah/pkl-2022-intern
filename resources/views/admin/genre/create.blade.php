@@ -12,7 +12,13 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="">Kategori</label>
-                        <input type="text" name="kategori" class="form-control" id="" required>
+                        <input type="text" name="kategori"
+                            class="form-control @error('kategori') is-invalid @enderror" id="" required>
+                        @error('kategori')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                     </div>
                 </div>
                 <div class="modal-footer">

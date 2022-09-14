@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Alert;
 use App\Models\GenreFilm;
 use Illuminate\Http\Request;
+use Validator;
 
 class GenreController extends Controller
 {
@@ -21,10 +22,27 @@ class GenreController extends Controller
 
     public function store(Request $request)
     {
-        // validasi
-        $validated = $request->validate([
+        $rules = [
             'kategori' => 'required|unique:genre_films',
-        ]);
+        ];
+
+        $messages = [
+            'kategori.required' => 'Kategori harus di isi!',
+            'kategori.unique' => 'kategori tidak boleh sama!',
+        ];
+
+        // validasi
+        $validation = Validator::make($request->all(), $rules, $messages);
+
+        // $validated = $request->validate([
+        //     'kategori' => 'required|unique:genre_films',
+        // ]);
+
+        if ($validation->fails()) {
+            Alert::error('data yang anda input ada kesalahan', 'Oops!')->persistent("Ok");
+            return back()->withErrors($validation)->withInput();
+        }
+
         $genres = new GenreFilm();
         $genres->kategori = $request->kategori;
         $genres->save();
