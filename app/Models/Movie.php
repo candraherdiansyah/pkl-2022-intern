@@ -19,10 +19,27 @@ class Movie extends Model
         return $this->belongsTo(TahunRilis::class, 'id_tahun_rilis');
     }
 
-    public function durasiFilm()
+    public function casting()
     {
-        // data model Movie dimiliki oleh Model DurasiFilm
-        // melalui fk id_durasi_film
-        return $this->belongsTo(DurasiFilm::class, 'id_durasi_film');
+        // model Movie bisa memiliki banyak data (n to n)
+        // dari model Casting melalui table pivot(bantuan)
+        // yang bernama 'movie_casting' dengan masing-masing
+        // fk id movie dan id_casting
+        return $this->belongsToMany(Casting::class,
+            'movie_casting', 'id_casting', 'id_movie');
+    }
+
+    public function genreFilm()
+    {
+        // data model Movie dimiliki oleh Model GenreFilm
+        // melalui fk id_genre
+        return $this->belongsTo(GenreFilm::class, 'id_genre');
+    }
+
+    public function reviewer()
+    {
+        // data model Movie dimiliki oleh Model Reviwer
+        // melalui fk id_reviewer
+        return $this->belongsTo(Reviwer::class, 'id_reviewer');
     }
 }
