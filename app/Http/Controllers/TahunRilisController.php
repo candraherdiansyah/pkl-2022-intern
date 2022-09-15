@@ -2,83 +2,95 @@
 
 namespace App\Http\Controllers;
 
+use Alert;
+use App\Models\TahunRilis;
 use Illuminate\Http\Request;
+use Validator;
 
 class TahunRilisController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        //
+        $tahun = TahunRilis::all();
+        return view('admin.tahunRilis.index', compact('tahun'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
-        //
+        return view('admin.tahunRilis.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+        $rules = [
+            'tahun' => 'required|unique:tahun_rilis|numeric',
+        ];
+
+        $messages = [
+            'tahun.required' => 'tahun harus di isi!',
+            'tahun.unique' => 'tahun tidak boleh sama!',
+            'tahun.numeric' => 'tahun harus berjenis angka!',
+        ];
+
+        // validasi
+        $validation = Validator::make($request->all(), $rules, $messages);
+
+        if ($validation->fails()) {
+            Alert::error('data yang anda input ada kesalahan', 'Oops!')->persistent("Ok");
+            return back()->withErrors($validation)->withInput();
+        }
+
+        $tahun = new TahunRilis();
+        $tahun->tahun = $request->tahun;
+        $tahun->save();
+        Alert::success('Done', 'Data berhasil dibuat')->autoClose(2000);
+        return redirect()->route('tahun_rilis.index');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
-        //
+        $tahun = TahunRilis::findOrFail($id);
+        return view('admin.tahunRilis.show', compact('tahun'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
-        //
+        $tahun = TahunRilis::findOrFail($id);
+        return view('admin.tahunRilis.edit', compact('tahun'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
-        //
+        $rules = [
+            'tahun' => 'required|numeric',
+        ];
+
+        $messages = [
+            'tahun.required' => 'tahun harus di isi!',
+            'tahun.numeric' => 'tahun harus berjenis angka!',
+        ];
+
+// validasi
+        $validation = Validator::make($request->all(), $rules, $messages);
+
+        if ($validation->fails()) {
+            Alert::error('data yang anda input ada kesalahan', 'Oops!')->persistent("Ok");
+            return back()->withErrors($validation)->withInput();
+        }
+
+        $tahun = TahunRilis::findOrFail($id);
+        $tahun->tahun = $request->tahun;
+        $tahun->save();
+        Alert::success('Done', 'Data berhasil diedit')->autoClose(2000);
+        return redirect()->route('tahun_rilis.index');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
-        //
+        $tahun = TahunRilis::findOrFail($id);
+        $tahun->delete();
+        Alert::success('Done', 'Data berhasil dihapus')->autoClose(2000);
+        return redirect()->route('tahun_rilis.index');
+
     }
 }
