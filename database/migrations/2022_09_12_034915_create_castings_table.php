@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('castings', function (Blueprint $table) {
             $table->id();
-            $table->string('nama_pemain');
+            $table->string('nama');
             $table->string('foto');
             $table->string('jenis_kelamin');
             $table->date('tanggal_lahir');

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CastingController;
 use App\Http\Controllers\DurasiFilmController;
 use App\Http\Controllers\GenreController;
 use App\Http\Controllers\MovieController;
@@ -29,6 +30,7 @@ Route::group(['prefix' => 'admin',
     Route::resource('movie', MovieController::class);
     Route::resource('reviewer', ReviewerController::class);
     Route::resource('tahun_rilis', TahunRilisController::class);
+    Route::resource('casting', CastingController::class);
 
 });
 
