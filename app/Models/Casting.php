@@ -19,21 +19,23 @@ class Casting extends Model
         // yang bernama 'movie_casting' dengan masing-masing
         // fk id movie dan id_casting
         return $this->belongsToMany(Movie::class,
-            'movie_casting', 'id_movie', 'id_casting');
+            'casting_movie', 'id_casting', 'id_movie');
     }
 
     public function image()
     {
-        if ($this->foto && file_exists(public_path('images/casting/' . $this->foto))) {
+        if ($this->foto && file_exists(public_path('images/casting/'
+            . $this->foto))) {
             return asset('images/casting/' . $this->foto);
         } else {
             return asset('images/no_image.jpg');
         }
     }
-    // mengahupus image(foto) di storage(penyimpanan) public
+// mengahupus image(foto) di storage(penyimpanan) public
     public function deleteImage()
     {
-        if ($this->foto && file_exists(public_path('images/casting/' . $this->foto))) {
+        if ($this->foto && file_exists(public_path('images/casting/'
+            . $this->foto))) {
             return unlink(public_path('images/casting/' . $this->foto));
         }
     }

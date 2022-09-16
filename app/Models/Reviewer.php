@@ -8,13 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class Reviewer extends Model
 {
     use HasFactory;
-    public $fillable = ['nama', 'foto', 'komentar'];
+    public $fillable = ['nama', 'email', 'foto', 'komentar', 'id_movie'];
     public $timestamps = true;
 
     public function movie()
     {
-        // model Reviewer memiliki banyak data
-        // dari model Movie melalui fk id_genre
+        // data model Reviewer bisa dimiliki
+        // oleh model Movie melalui fk id_movie
         return $this->belongsTo(Movie::class, 'id_movie');
     }
 }

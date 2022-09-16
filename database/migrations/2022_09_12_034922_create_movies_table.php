@@ -29,7 +29,6 @@ return new class extends Migration
                 ->on('tahun_rilis');
             $table->foreign('id_genre')->references('id')
                 ->on('genre_films');
-
             $table->timestamps();
         });
 
@@ -39,9 +38,9 @@ return new class extends Migration
             $table->bigInteger('id_movie')->unsigned();
 
             $table->foreign('id_casting')->references('id')
-                ->on('castings');
+                ->on('castings')->onDelete('cascade');
             $table->foreign('id_movie')->references('id')
-                ->on('movies');
+                ->on('movies')->onDelete('cascade');
 
         });
 
