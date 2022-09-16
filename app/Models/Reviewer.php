@@ -15,6 +15,6 @@ class Reviewer extends Model
     {
         // model Reviewer memiliki banyak data
         // dari model Movie melalui fk id_genre
-        return $this->hasMany(Movie::class, 'id_reviewer');
+        return $this->belongsTo(Movie::class, 'id_movie');
     }
 }

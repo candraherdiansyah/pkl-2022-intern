@@ -22,7 +22,6 @@ return new class extends Migration
             $table->integer('durasi');
             $table->bigInteger('id_tahun_rilis')->unsigned();
             $table->bigInteger('id_genre')->unsigned();
-            $table->bigInteger('id_reviewer')->unsigned();
 
             // relasi
             // fk id_tahun_rilis
@@ -30,8 +29,6 @@ return new class extends Migration
                 ->on('tahun_rilis');
             $table->foreign('id_genre')->references('id')
                 ->on('genre_films');
-            $table->foreign('id_reviewer')->references('id')
-                ->on('reviewers');
 
             $table->timestamps();
         });

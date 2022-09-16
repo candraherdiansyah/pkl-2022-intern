@@ -40,6 +40,6 @@ class Movie extends Model
     {
         // data model Movie dimiliki oleh Model Reviwer
         // melalui fk id_reviewer
-        return $this->belongsTo(Reviwer::class, 'id_reviewer');
+        return $this->hasMany(Reviwer::class, 'id_movie');
     }
 }
