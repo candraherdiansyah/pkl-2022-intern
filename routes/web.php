@@ -2,17 +2,12 @@
 
 use App\Http\Controllers\CastingController;
 use App\Http\Controllers\DurasiFilmController;
+use App\Http\Controllers\FrontController;
 use App\Http\Controllers\GenreController;
 use App\Http\Controllers\MovieController;
 use App\Http\Controllers\ReviewerController;
 use App\Http\Controllers\TahunRilisController;
 use Illuminate\Support\Facades\Route;
-
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('about', [MyController::class, 'about']);
 
 Auth::routes();
 
@@ -37,3 +32,7 @@ Route::group(['prefix' => 'admin',
 Route::get('/errors', function () {
     return view('errors.403');
 });
+
+// route front
+Route::get('/', [FrontController::class, 'index']);
+Route::get('movies', [FrontController::class, 'movies']);

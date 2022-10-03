@@ -17,7 +17,8 @@
                         </div>
                         <div class="form-group">
                             <label for="">Durasi Film</label>
-                            <input type="text" name="tahun" value="{{ $movie->durasi }}" class="form-control" readonly>
+                            <input type="text" name="tahun" value="{{ $movie->durasi }} Menit" class="form-control"
+                                readonly>
                         </div>
                         <div class="form-group">
                             <label for="">Genre</label>
