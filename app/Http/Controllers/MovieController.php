@@ -108,8 +108,8 @@ class MovieController extends Controller
     {
         $rules = [
             'judul' => 'required',
-            'background' => 'required|image|max:1024',
-            'cover' => 'required|image|max:1024',
+            // 'background' => 'required|image|max:1024',
+            // 'cover' => 'required|image|max:1024',
             'sinopsis' => 'required',
             'id_genre' => 'required',
             'id_tahun_rilis' => 'required',
@@ -118,12 +118,12 @@ class MovieController extends Controller
 
         $messages = [
             'judul.required' => 'Nama harus di isi!',
-            'cover.required' => 'cover harus di isi!',
-            'cover.image' => 'cover harus berjenis jpg & png!',
-            'cover.max' => 'cover harus dibawah kapasitas 1024kb!',
-            'background.required' => 'background harus di isi!',
-            'background.image' => 'background harus berjenis jpg & png!',
-            'background.max' => 'background harus dibawah kapasitas 1024kb!',
+            // 'cover.required' => 'cover harus di isi!',
+            // 'cover.image' => 'cover harus berjenis jpg & png!',
+            // 'cover.max' => 'cover harus dibawah kapasitas 1024kb!',
+            // 'background.required' => 'background harus di isi!',
+            // 'background.image' => 'background harus berjenis jpg & png!',
+            // 'background.max' => 'background harus dibawah kapasitas 1024kb!',
             'sinopsis.required' => 'sinopsis harus di isi!',
             'id_genre.required' => 'Genre harus di isi!',
             'id_tahun_rilis.required' => 'Tahun Rilis harus di isi!',

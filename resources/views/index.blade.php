@@ -4,177 +4,45 @@
     <section class="hero-area" id="home">
         <div class="container">
             <div class="hero-area-slider">
-                <div class="row hero-area-slide">
-                    <div class="col-lg-6 col-md-5">
-                        <div class="hero-area-content">
-                            <img src="{{ asset('assets/front/img/slide2.png') }}" alt="about" />
+                @foreach ($movies as $movie)
+                    <div class="row hero-area-slide">
+                        <div class="col-lg-6 col-md-5">
+                            <div class="hero-area-content">
+                                <img src="{{ $movie->image() }}" style="width: 330px; height:456px;" alt="about" />
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-lg-6 col-md-7">
-                        <div class="hero-area-content pr-50">
-                            <h2>The Devil Princess</h2>
-                            <div class="review">
-                                <div class="author-review">
-                                    <i class="icofont icofont-star"></i>
-                                    <i class="icofont icofont-star"></i>
-                                    <i class="icofont icofont-star"></i>
-                                    <i class="icofont icofont-star"></i>
-                                    <i class="icofont icofont-star"></i>
+                        <div class="col-lg-6 col-md-7">
+                            <div class="hero-area-content pr-50">
+                                <h2>{{ $movie->judul }}</h2>
+                                <div class="review">
+                                    <div class="author-review">
+                                        <i class="icofont icofont-star"></i>
+                                        <i class="icofont icofont-star"></i>
+                                        <i class="icofont icofont-star"></i>
+                                        <i class="icofont icofont-star"></i>
+                                        <i class="icofont icofont-star"></i>
+                                    </div>
+                                    <h4>180k voters</h4>
                                 </div>
-                                <h4>180k voters</h4>
-                            </div>
-                            <p>She is a devil princess from the demon world. She grew up sheltered by her parents and
-                                doesn't really know how to be evil or any of the common actions, She is unable to cry
-                                due to Keita's accidental first wish, despite needed for him to wish...</p>
-                            <h3>Cast:</h3>
-                            <div class="slide-cast">
-                                <div class="single-slide-cast">
-                                    <img src="{{ asset('assets/front/img/cast/cast1.png') }}" alt="about" />
+                                <p>{{ Str::limit($movie->sinopsis, 125, '...') }}</p>
+                                <h3>Cast:</h3>
+                                <div class="slide-cast">
+                                    @foreach ($movie->casting as $cast)
+                                        <div class="single-slide-cast">
+                                            <img src="{{ $cast->image() }}" style="width: 39px; height:39px;"
+                                                alt="about" />
+                                        </div>
+                                    @endforeach
                                 </div>
-                                <div class="single-slide-cast">
-                                    <img src="{{ asset('assets/front/img/cast/cast2.html') }}" alt="about" />
+                                <div class="slide-trailor">
+                                    <h3>Watch Trailer</h3>
+                                    <a class="theme-btn theme-btn2" href="#"><i class="icofont icofont-play"></i>
+                                        Tickets</a>
                                 </div>
-                                <div class="single-slide-cast">
-                                    <img src="{{ asset('assets/front/img/cast/cast3.png') }}" alt="about" />
-                                </div>
-                                <div class="single-slide-cast">
-                                    <img src="{{ asset('assets/front/img/cast/cast4.png') }}" alt="about" />
-                                </div>
-                                <div class="single-slide-cast">
-                                    <img src="{{ asset('assets/front/img/cast/cast5.png') }}" alt="about" />
-                                </div>
-                                <div class="single-slide-cast">
-                                    <img src="{{ asset('assets/front/img/cast/cast6.png') }}" alt="about" />
-                                </div>
-                                <div class="single-slide-cast">
-                                    <img src="{{ asset('assets/front/img/cast/cast7.png') }}" alt="about" />
-                                </div>
-                                <div class="single-slide-cast text-center">
-                                    5+
-                                </div>
-                            </div>
-                            <div class="slide-trailor">
-                                <h3>Watch Trailer</h3>
-                                <a class="theme-btn theme-btn2" href="#"><i class="icofont icofont-play"></i>
-                                    Tickets</a>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="row hero-area-slide">
-                    <div class="col-lg-6 col-md-5">
-                        <div class="hero-area-content">
-                            <img src="{{ asset('assets/front/img/slide1.png') }}" alt="about" />
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-md-7">
-                        <div class="hero-area-content pr-50">
-                            <h2>Last Avatar</h2>
-                            <div class="review">
-                                <div class="author-review">
-                                    <i class="icofont icofont-star"></i>
-                                    <i class="icofont icofont-star"></i>
-                                    <i class="icofont icofont-star"></i>
-                                    <i class="icofont icofont-star"></i>
-                                    <i class="icofont icofont-star"></i>
-                                </div>
-                                <h4>180k voters</h4>
-                            </div>
-                            <p>She is a devil princess from the demon world. She grew up sheltered by her parents and
-                                doesn't really know how to be evil or any of the common actions, She is unable to cry
-                                due to Keita's accidental first wish, despite needed for him to wish...</p>
-                            <h3>Cast:</h3>
-                            <div class="slide-cast">
-                                <div class="single-slide-cast">
-                                    <img src="{{ asset('assets/front/img/cast/cast1.png') }}" alt="about" />
-                                </div>
-                                <div class="single-slide-cast">
-                                    <img src="{{ asset('assets/front/img/cast/cast2.html') }}" alt="about" />
-                                </div>
-                                <div class="single-slide-cast">
-                                    <img src="{{ asset('assets/front/img/cast/cast3.png') }}" alt="about" />
-                                </div>
-                                <div class="single-slide-cast">
-                                    <img src="{{ asset('assets/front/img/cast/cast4.png') }}" alt="about" />
-                                </div>
-                                <div class="single-slide-cast">
-                                    <img src="{{ asset('assets/front/img/cast/cast5.png') }}" alt="about" />
-                                </div>
-                                <div class="single-slide-cast">
-                                    <img src="{{ asset('assets/front/img/cast/cast6.png') }}" alt="about" />
-                                </div>
-                                <div class="single-slide-cast">
-                                    <img src="{{ asset('assets/front/img/cast/cast7.png') }}" alt="about" />
-                                </div>
-                                <div class="single-slide-cast text-center">
-                                    5+
-                                </div>
-                            </div>
-                            <div class="slide-trailor">
-                                <h3>Watch Trailer</h3>
-                                <a class="theme-btn theme-btn2" href="#"><i class="icofont icofont-play"></i>
-                                    Tickets</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row hero-area-slide">
-                    <div class="col-lg-6 col-md-5">
-                        <div class="hero-area-content">
-                            <img src="{{ asset('assets/front/img/slide3.png') }}" alt="about" />
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-md-7">
-                        <div class="hero-area-content pr-50">
-                            <h2>The Deer God</h2>
-                            <div class="review">
-                                <div class="author-review">
-                                    <i class="icofont icofont-star"></i>
-                                    <i class="icofont icofont-star"></i>
-                                    <i class="icofont icofont-star"></i>
-                                    <i class="icofont icofont-star"></i>
-                                    <i class="icofont icofont-star"></i>
-                                </div>
-                                <h4>180k voters</h4>
-                            </div>
-                            <p>She is a devil princess from the demon world. She grew up sheltered by her parents and
-                                doesn't really know how to be evil or any of the common actions, She is unable to cry
-                                due to Keita's accidental first wish, despite needed for him to wish...</p>
-                            <h3>Cast:</h3>
-                            <div class="slide-cast">
-                                <div class="single-slide-cast">
-                                    <img src="{{ asset('assets/front/img/cast/cast1.png') }}" alt="about" />
-                                </div>
-                                <div class="single-slide-cast">
-                                    <img src="{{ asset('assets/front/img/cast/cast2.html') }}" alt="about" />
-                                </div>
-                                <div class="single-slide-cast">
-                                    <img src="{{ asset('assets/front/img/cast/cast3.png') }}" alt="about" />
-                                </div>
-                                <div class="single-slide-cast">
-                                    <img src="{{ asset('assets/front/img/cast/cast4.png') }}" alt="about" />
-                                </div>
-                                <div class="single-slide-cast">
-                                    <img src="{{ asset('assets/front/img/cast/cast5.png') }}" alt="about" />
-                                </div>
-                                <div class="single-slide-cast">
-                                    <img src="{{ asset('assets/front/img/cast/cast6.png') }}" alt="about" />
-                                </div>
-                                <div class="single-slide-cast">
-                                    <img src="{{ asset('assets/front/img/cast/cast7.png') }}" alt="about" />
-                                </div>
-                                <div class="single-slide-cast text-center">
-                                    5+
-                                </div>
-                            </div>
-                            <div class="slide-trailor">
-                                <h3>Watch Trailer</h3>
-                                <a class="theme-btn theme-btn2" href="#"><i class="icofont icofont-play"></i>
-                                    Tickets</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
             <div class="hero-area-thumb">
                 <div class="thumb-prev">
