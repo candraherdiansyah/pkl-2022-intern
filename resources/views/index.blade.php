@@ -35,9 +35,10 @@
                                     @endforeach
                                 </div>
                                 <div class="slide-trailor">
-                                    <h3>Watch Trailer</h3>
-                                    <a class="theme-btn theme-btn2" href="#"><i class="icofont icofont-play"></i>
-                                        Tickets</a>
+                                    <h3>Detail Movie</h3>
+                                    <a class="theme-btn theme-btn2" href="/movies/{{ $movie->id }}"><i
+                                            class="icofont icofont-play"></i>
+                                        Detail</a>
                                 </div>
                             </div>
                         </div>

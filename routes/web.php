@@ -36,3 +36,4 @@ Route::get('/errors', function () {
 // route front
 Route::get('/', [FrontController::class, 'index']);
 Route::get('movies', [FrontController::class, 'movies']);
+Route::get('movies/{id}', [FrontController::class, 'singleMovie']);

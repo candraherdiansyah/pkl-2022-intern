@@ -18,7 +18,14 @@ class FrontController extends Controller
 
     public function movies()
     {
+        $genres = GenreFilm::all();
         $movies = Movie::orderBy('id', 'desc')->get();
-        return view('movies', compact('movies'));
+        return view('movies', compact('movies', 'genres'));
+    }
+
+    public function singleMovie($id)
+    {
+        $movie = Movie::findOrFail($id);
+        return view('singleMovie', compact('movie'));
     }
 }
