@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Reviewer extends Model
 {
     use HasFactory;
-    public $fillable = ['nama', 'email', 'foto', 'komentar', 'id_movie'];
+    public $fillable = ['nama', 'email', 'komentar', 'id_movie'];
     public $timestamps = true;
 
     public function movie()

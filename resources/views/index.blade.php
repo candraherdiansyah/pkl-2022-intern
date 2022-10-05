@@ -30,7 +30,7 @@
                                     @foreach ($movie->casting as $cast)
                                         <div class="single-slide-cast">
                                             <img src="{{ $cast->image() }}" style="width: 39px; height:39px;"
-                                                alt="about" />
+                                                alt="foto cast" />
                                         </div>
                                     @endforeach
                                 </div>

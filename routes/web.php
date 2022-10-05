@@ -37,3 +37,4 @@ Route::get('/errors', function () {
 Route::get('/', [FrontController::class, 'index']);
 Route::get('movies', [FrontController::class, 'movies']);
 Route::get('movies/{id}', [FrontController::class, 'singleMovie']);
+Route::post('sendReview', [FrontController::class, 'sendReview'])->name('kirimRiview');
