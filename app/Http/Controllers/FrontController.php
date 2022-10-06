@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Alert;
-
 use App\Models\GenreFilm;
 use App\Models\Movie;
 use App\Models\Reviewer;
@@ -30,11 +29,11 @@ class FrontController extends Controller
     public function singleMovie($id)
     {
         $movie = Movie::findOrFail($id);
-        $review = Reviewer::select('reviewers.nama','reviewers.email','reviewers.komentar')
-                    ->join('movies','movies.id','=','reviewers.id_movie')
-                    ->where('reviewers.id_movie',$id)
-                    ->get();
-        return view('singleMovie', compact('movie','review'));
+        $review = Reviewer::select('reviewers.nama', 'reviewers.email', 'reviewers.komentar')
+            ->join('movies', 'movies.id', '=', 'reviewers.id_movie')
+            ->where('reviewers.id_movie', $id)
+            ->get();
+        return view('singleMovie', compact('movie', 'review'));
     }
 
     public function sendReview(Request $request)
