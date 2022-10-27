@@ -25,7 +25,7 @@
                     <ul id="primary-menu">
                         <li><a class="active" href="{{ url('/') }}">Home</a></li>
                         <li><a href="{{ url('movies') }}">Movies</a></li>
-                        <li><a href="celebrities.html">Seleberities</a></li>
+                        <li><a href="celebrities.html">Selebrities</a></li>
                         <li><a href="top-movies.html">Top Movies</a></li>
                         <li><a href="blog.html">News</a></li>
                         <li><a href="#">Pages <i class="icofont icofont-simple-down"></i></a>
